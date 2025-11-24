@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"fmt"
@@ -37,6 +37,10 @@ func (toDos *tasks) markCompleted(index int) {
 	(*toDos)[index].Completed = true
 	completedTime := time.Now()
 	(*toDos)[index].CompletedAt = &completedTime
+}
+
+func (toDos *tasks) clearList() {
+	*toDos = tasks{}
 }
 
 func (toDos *tasks) list() []Task {
