@@ -40,17 +40,28 @@ func (toDos *tasks) markCompleted(index int) {
 }
 
 func (toDos *tasks) list() []Task {
+	fmt.Println("To-Do List!")
+	fmt.Println("-----------------------------------------------------------")
+	if len(*toDos) == 0 {
+		fmt.Println("You have no tasks!")
+	}
+
 	for index, task := range *toDos {
-		fmt.Println("Task", index+1)
-		fmt.Println(task.Task)
-		fmt.Println(task.Completed)
-		fmt.Println(task.CreatedAt.Format(time.RFC1123))
-		if task.CompletedAt != nil {
-			fmt.Println(task.CompletedAt.Format(time.RFC1123))
-		} else {
-			fmt.Println("Not completed yet")
+		completedStatus := "[ ]"
+		if task.Completed {
+			completedStatus = "[X]"
 		}
-		fmt.Println("-------------------")
+
+		createdTime := "Created at: " + task.CreatedAt.Format(time.RFC1123)
+
+		completedTime := "Not Completed!"
+
+		if task.CompletedAt != nil {
+			completedTime = "Completed at: " + task.CompletedAt.Format(time.RFC1123)
+		}
+
+		fmt.Print("Task: ", index+1, "\n", task.Task, "\n", completedStatus, "\n", createdTime, "\n", completedTime, "\n")
+		fmt.Println("-----------------------------------------------------------")
 	}
 	return *toDos
 }

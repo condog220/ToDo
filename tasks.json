@@ -1,0 +1,18 @@
+[
+  {
+    "task": "Learn Go",
+    "completed": false,
+    "created_at": "2025-11-23T23:52:21.4164719Z"
+  },
+  {
+    "task": "Be cool!",
+    "completed": false,
+    "created_at": "2025-11-23T23:52:28.6501852Z"
+  },
+  {
+    "task": "Buy Eggs",
+    "completed": true,
+    "created_at": "2025-11-23T23:52:32.1247723Z",
+    "completed_at": "2025-11-23T23:57:43.2537882Z"
+  }
+]

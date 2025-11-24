@@ -10,7 +10,13 @@ func main() {
 	var toDos tasks
 	var choice int
 
-	for choice != 6 {
+	loadedTasks, err := LoadfromJson()
+	if err != nil {
+		fmt.Println("Error loading tasks from JSON:", err)
+	}
+	toDos = loadedTasks
+
+	for choice != 7 {
 		printInstructions()
 		fmt.Scanln(&choice)
 
@@ -43,10 +49,8 @@ func main() {
 		case 5:
 			toDos.list()
 		case 6:
-			var filename string
-			fmt.Println("Enter the filename to save tasks (e.g., tasks.json):")
-			fmt.Scanln(&filename)
-			err := SavetoJson(filename, toDos)
+			err := SavetoJson(toDos)
+			fmt.Println("Tasks saved to JSON successfully!")
 			if err != nil {
 				fmt.Println("Error saving to JSON:", err)
 			}

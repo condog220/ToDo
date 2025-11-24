@@ -5,17 +5,17 @@ import (
 	"os"
 )
 
-func SavetoJson(filename string, toDos tasks) error {
+func SavetoJson(toDos tasks) error {
 	data, err := json.MarshalIndent(toDos, "", "  ")
 	if err != nil {
 		return err
 	}
-	return os.WriteFile(filename, data, 0644)
+	return os.WriteFile("tasks.json", data, 0644)
 }
 
-func LoadfromJson(filename string) (tasks, error) {
+func LoadfromJson() (tasks, error) {
 	var toDos tasks
-	data, err := os.ReadFile(filename)
+	data, err := os.ReadFile("tasks.json")
 	if err != nil {
 		return toDos, err
 	}
